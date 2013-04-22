@@ -1,14 +1,25 @@
 package racetrack
 
 class Registration {
-    String name
-    Date startDate
-    String city
-    String state
-    BigDecimal distance
-    BigDecimal cost
-    BigDecimal maxRunners = 10000
 
     static constraints = {
+        race()
+        runner()
+        paid()
+        dateCreated()
     }
+
+    static mapping = {
+//        autoTimestamp false // 关闭 dateCreated lastUpdated 的默认功能
+    }
+
+    static belongsTo = [race: Race, runner: Runner]
+
+    Boolean paid
+    Date dateCreated
+
+    def beforeInsert = {}
+    def beforeUpdate = {}
+    def beforeDelete = {}
+    def onLoad = {}
 }

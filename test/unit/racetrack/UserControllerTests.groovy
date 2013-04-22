@@ -5,6 +5,8 @@ package racetrack
 import org.junit.*
 import grails.test.mixin.*
 
+import static grails.test.MockUtils.mockDomain
+
 @TestFor(UserController)
 @Mock(User)
 class UserControllerTests {
@@ -18,6 +20,7 @@ class UserControllerTests {
     void testIndex() {
         controller.index()
         assert "/user/list" == response.redirectedUrl
+        assert 'list' == controller.redirectArgs['action']
     }
 
     void testList() {
@@ -151,5 +154,22 @@ class UserControllerTests {
         assert User.count() == 0
         assert User.get(user.id) == null
         assert response.redirectedUrl == '/user/list'
+    }
+
+    void testAuthenticate(){
+        def wang = new User(login: 'wang',password: 'wang')
+        mockDomain(User,[wang])
+
+        controller.params.login = 'wang'
+        controller.params.password = 'wang'
+        controller.authenticate()
+        assertNotNull controller.session.user
+        assertEquals 'wang', controller.session.user.login
+
+        controller.params.password = 'pass'
+        controller.authenticate()
+        assertTrue controller.flash.message.startsWith('Sorry, wang')
+
+
     }
 }

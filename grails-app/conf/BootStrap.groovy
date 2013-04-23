@@ -21,13 +21,13 @@ class BootStrap {
     private initData() {
         //
         def runner = new Runner(
-                firstName: 'Wang',
-                lastName: 'Cheng',
+                firstName: '王',
+                lastName: '成义',
                 dateOfBirth: (new Date() - 365 * 30),
                 gender: 'F',
-                address: '123 ZhongJiang Road',
-                city: 'ShangHai',
-                state: 'NC',
+                address: '中江路123',
+                city: '上海',
+                state: '上海',
                 zipCode: '12124',
                 email: 'wang.cheng@yi.com'
         )
@@ -38,10 +38,10 @@ class BootStrap {
 
         //
         def race = new Race(
-                name: 'a race',
+                name: '新世纪马拉松比赛',
                 startDate: (new Date() + 30),
-                city: 'Duck',
-                state: 'NC',
+                city: '上海',
+                state: '上海',
                 distance: 5.0,
                 cost: 20.0,
                 maxRunners: 300

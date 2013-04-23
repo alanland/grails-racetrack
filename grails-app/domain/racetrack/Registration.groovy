@@ -2,6 +2,8 @@ package racetrack
 
 class Registration {
 
+    static searchable = true
+
     static constraints = {
         race()
         runner()

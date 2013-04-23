@@ -6,6 +6,8 @@ class User {
     String password
     String role = 'user'
 
+    static searchable = true
+
     static constraints = {
         login(blank: false, nullable: false, unique: true)
         password(blank: false, password: true)

@@ -2,6 +2,8 @@ package racetrack
 
 class Runner {
 
+    static searchable = true
+
     static constraints = {
         firstName(blank: false)
         lastName(blank: false)

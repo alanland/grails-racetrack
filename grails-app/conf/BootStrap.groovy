@@ -1,9 +1,11 @@
 import grails.util.Environment
-import grails.util.GrailsUtil
 import racetrack.Race
 import racetrack.Registration
 import racetrack.Runner
 import racetrack.User
+import racetrack.login.Authority
+import racetrack.login.Person
+import racetrack.login.PersonAuthority
 
 class BootStrap {
 
@@ -79,6 +81,17 @@ class BootStrap {
         user.save()
         if (user.hasErrors())
             println user.errors
+
+        // spring security
+        def userRole = Authority.findByAuthority('ROLE_USER') ?: new Authority(authority: 'ROLE_USER').save(failOnError: true)
+        def adminRole = Authority.findByAuthority('ROLE_ADMIN') ?: new Authority(authority: 'ROLE_ADMIN').save(failOnError: true)
+        def userUser = new Person(username: 'wang', enabled: true, password: 'wang')
+        userUser.save(flush: true)
+        PersonAuthority.create userUser, userRole, true
+        def adminUser = new Person(username: 'admin', enabled: true, password: 'admin')
+        adminUser.save(flush: true)
+        PersonAuthority.create adminUser, adminRole, true
+
     }
 
     def destroy = {

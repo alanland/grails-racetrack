@@ -31,7 +31,7 @@ class Race {
 
     static hasMany = [registration: Registration]
 
-    String toString(){
+    String toString() {
         return "$name, ${startDate.format('MM/dd/yyyy')}"
     }
 }

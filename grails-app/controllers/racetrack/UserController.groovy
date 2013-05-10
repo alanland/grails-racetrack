@@ -1,7 +1,5 @@
 package racetrack
 
-import org.springframework.dao.DataIntegrityViolationException
-
 class UserController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]

@@ -38,6 +38,40 @@ class BootStrap {
             println runner.errors
         }
 
+        def runner2 = new Runner(
+                firstName: '王',
+                lastName: '阳明',
+                dateOfBirth: (new Date() - 365 * 3000),
+                gender: 'F',
+                address: 'xxx',
+                city: '上海',
+                state: '上海',
+                zipCode: '12124',
+                email: 'wang.cheng@yi.com'
+        ).save()
+        def runner3 = new Runner(
+                firstName: '丘',
+                lastName: '处机',
+                dateOfBirth: (new Date() - 365 * 3500),
+                gender: 'F',
+                address: 'xxx',
+                city: '上海',
+                state: '上海',
+                zipCode: '12124',
+                email: 'wang.cheng@yi.com'
+        ).save()
+        def runner4 = new Runner(
+                firstName: '小白',
+                lastName: '鼠',
+                dateOfBirth: (new Date() - 365 * 3500),
+                gender: 'F',
+                address: 'xxx',
+                city: '上海',
+                state: '上海',
+                zipCode: '12124',
+                email: 'wang.cheng@yi.com'
+        ).save()
+
         //
         def race = new Race(
                 name: '新世纪马拉松比赛',
@@ -51,16 +85,26 @@ class BootStrap {
         race.save()
         if (race.hasErrors())
             println race.errors
+        def race2 = new Race(
+                name: '大夏王朝马拉松',
+                startDate: (new Date() + 30),
+                city: '都城',
+                state: 'xxx',
+                distance: 500.0,
+                cost: 0.0,
+                maxRunners: 6000
+        ).save()
 
         //
-        def reg = new Registration(
-                paid: false,
-                runner: runner,
-                race: race
-        )
+        def reg = new Registration(paid: false, runner: runner, race: race)
         reg.save()
         if (reg.hasErrors())
             println reg.errors
+        def reg1 = new Registration(paid: false, runner: runner, race1: race).save()
+        def reg21 = new Registration(paid: false, runner2: runner, race: race).save()
+        def reg22 = new Registration(paid: false, runner2: runner, race: race).save()
+        def reg31 = new Registration(paid: false, runner3: runner, race: race).save()
+        def reg32 = new Registration(paid: false, runner3: runner, race: race).save()
 
         //
         def admin = new User(

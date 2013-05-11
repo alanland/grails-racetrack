@@ -67,8 +67,10 @@ grails.project.dependency.resolution = {
         compile ':cache:1.0.1'
 
         compile ':spring-security-core:1.2.7.3'
+//        compile ":spring-security-ui:0.2"
         compile ':jquery-ui:1.8.24'
         compile ':excel-import:1.0.0'
+        compile ':excel-export:0.1.4'
         compile ':searchable:0.6.4'
 
     }
